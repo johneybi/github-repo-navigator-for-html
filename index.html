@@ -10,14 +10,36 @@
         href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-full.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
     <style>
+        :root {
+            --bg: #e8e8e8;
+            --contrast: #e2e0e0;
+            --lgrey: #b4adad;
+            --wgrey: #7e7979;
+            --dwgrey: #686262;
+
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Wanted Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 
+        }
+
+        @font-face {
+            font-family: 'D2Coding';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff') format('woff');
+            font-weight: normal;
+            font-display: swap;
         }
 
         body {
@@ -28,22 +50,35 @@
         .container {
             position: relative;
             /* absolute → relative로 변경 */
+            padding: 9px;
             left: calc(50% - 450px);
             width: 900px;
-            background: white;
+            background-color: var(--bg);
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-radius: 35px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
             overflow: hidden;
             margin-top: 40px;
             margin-bottom: 40px;
             /* 하단 여백 추가 */
         }
 
+        .container-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: repeating-conic-gradient(var(--bg) 0.0000001%, var(--grey) 0.000104%) 60% 60%/600% 600%;
+            filter: opacity(10%) contrast(105%);
+        }
+
+        .container-inner {
+            background-color: var(--contrast);
+            border-radius: 30px;
+        }
+
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            color: var(--wgrey);
             padding: 40px;
-            text-align: center;
         }
 
         .header h1 {
@@ -54,16 +89,18 @@
         .header p {
             opacity: 0.9;
             font-size: 1.1em;
+            font-weight: 600;
         }
 
         .content {
             padding: 40px;
+            padding-top: 20px;
         }
 
         .loading {
             text-align: center;
             padding: 60px;
-            color: #6c757d;
+            color: var(--wgrey);
         }
 
         .loading::after {
@@ -89,9 +126,9 @@
         }
 
         .error {
-            background: #fff3cd;
-            border: 1px solid #ffc107;
-            color: #856404;
+            background: #ffecad73;
+            border: 1px solid #fcd253;
+            color: #755b0c;
             padding: 20px;
             border-radius: 10px;
             margin: 20px 0;
@@ -107,8 +144,9 @@
 
         .sort-btn {
             padding: 8px 16px;
-            border: 1px solid #d1d1d1;
-            background: white;
+            border: 1px solid var(--wgrey);
+            background: transparent;
+            color: var(--dwgrey);
             border-radius: 6px;
             cursor: pointer;
             font-size: 0.9em;
@@ -117,13 +155,14 @@
         }
 
         .sort-btn:hover {
-            background: #f8f9fa;
+            background: #f1efef;
         }
 
         .sort-btn.active {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
+            background: var(--wgrey);
+            color: var(--bg);
+            border-color: var(--dwgrey);
+            box-shadow: rgba(10, 37, 64, 0.4) 0px -2px 8px 0px inset;
         }
 
         .file-grid {
@@ -134,8 +173,8 @@
         }
 
         .file-card {
-            background: white;
-            border: 2px solid #e9ecef;
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid var(--lgrey);
             border-radius: 12px;
             padding: 20px;
             transition: all 0.3s;
@@ -147,18 +186,11 @@
 
         .file-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-            border-color: #667eea;
+            box-shadow: 0 10px 30px #b4adadab;
+            border-color: var(--wgrey);
         }
 
-        .file-card.index-file {
-            border-color: #28a745;
-        }
 
-        .file-card.index-file:hover {
-            border-color: #28a745;
-            box-shadow: 0 10px 30px rgba(40, 167, 69, 0.3);
-        }
 
         .file-header {
             display: flex;
@@ -167,9 +199,9 @@
         }
 
         .file-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 46px;
+            height: 46px;
+            background: linear-gradient(135deg, #c9c4c4 0%, #b4adad 100%);
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -180,7 +212,7 @@
         }
 
         .file-icon.index-icon {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            background: linear-gradient(135deg, #a0bdd3 0%, #80A1BA 100%);
         }
 
         .file-info {
@@ -191,55 +223,68 @@
         .file-name {
             font-weight: 600;
             font-size: 1.1em;
-            color: #212529;
+            color: var(--dwgrey);
             margin-bottom: 4px;
             word-break: break-word;
         }
 
+        .file-meta-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
         .file-directory {
             font-size: 0.85em;
-            color: #6c757d;
-            font-family: 'Courier New', monospace;
+            color: var(--wgrey);
+            font-family: 'IBM Plex Mono', 'D2Coding', monospace, Ubuntu, Cantarell, sans-serif;
             word-break: break-all;
             background: #f8f9fa;
             padding: 2px 6px;
             border-radius: 4px;
             display: inline-block;
-        }
-
-        .file-directory.index-dir {
-            background: #d4edda;
-            color: #155724;
-        }
-
-        .file-path {
-            font-size: 0.8em;
-            color: #868e96;
-            font-family: 'Courier New', monospace;
-            word-break: break-all;
-            margin-top: 8px;
-            padding-top: 8px;
-            border-top: 1px solid #f1f3f4;
+            flex-shrink: 1;
         }
 
         .file-size {
             font-size: 0.75em;
-            color: #868e96;
-            margin-top: 4px;
+            color: var(--wgrey);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .file-directory.index-dir {
+            background: #d1dce2;
+            color: #467091;
+        }
+
+        .file-path {
+            font-size: 0.8em;
+            color: var(--dwgrey);
+            word-break: break-all;
+            margin-top: 0px;
+            padding-top: 6px;
+            border-top: 1px solid var(--lgrey);
+        }
+
+        .file-path,
+        .file-size,
+        .file-directory {
+            font-family: 'IBM Plex Mono', 'D2Coding', monospace, sans-serif;
+
         }
 
         .stats {
-            background: #f8f9fa;
             padding: 15px 40px;
-            border-top: 1px solid #e9ecef;
-            color: #6c757d;
+            color: var(--dwgrey);
             text-align: center;
             font-size: 0.9em;
         }
 
-        .file-directory,
-        .file-size {
-            font-family: 'D2Coding', monospace, Ubuntu, Cantarell, sans-serif;
+        i {
+            color: var(--dwgrey);
         }
 
         #gradient-canvas {
@@ -249,10 +294,10 @@
             display: block;
             width: 100vw;
             height: 100vh;
-            --gradient-color-1: #fff;
-            --gradient-color-2: #737082;
-            --gradient-color-3: #7038ff;
-            --gradient-color-4: #ffba27;
+            --gradient-color-1: #e8e8e8;
+            --gradient-color-2: #D9E9CF;
+            --gradient-color-3: #B6CEB4;
+            --gradient-color-4: #96A78D;
             z-index: -1;
         }
     </style>
@@ -261,24 +306,28 @@
 <body>
     <canvas id="gradient-canvas"></canvas>
     <div class="container">
-        <div class="header">
-            <h1>📁 프로젝트 목록</h1>
-            <p>GitHub Repository의 HTML 파일 자동 목록</p>
-        </div>
-
-        <div class="content">
-            <div class="sort-options">
-                <button class="sort-btn active" onclick="sortFiles('name')">이름순</button>
-                <button class="sort-btn" onclick="sortFiles('directory')">폴더별</button>
-                <button class="sort-btn" onclick="sortFiles('size')">크기별</button>
+        <div class="container-overlay"></div>
+        <div class="container-inner">
+            <div class="header">
+                <h1>프로젝트 목록</h1>
+                <p>GitHub Repository의 HTML 파일 자동 목록</p>
             </div>
 
-            <div id="fileList">
-                <div class="loading">파일 목록을 불러오는 중</div>
+            <div class="content">
+                <div class="sort-options">
+                    <button class="sort-btn active" onclick="sortFiles('name')">이름순</button>
+                    <button class="sort-btn" onclick="sortFiles('directory')">폴더별</button>
+                    <button class="sort-btn" onclick="sortFiles('size')">크기별</button>
+                </div>
+
+                <div id="fileList">
+                    <div class="loading">파일 목록을 불러오는 중</div>
+                </div>
             </div>
         </div>
 
         <div class="stats" id="stats"></div>
+
     </div>
 
     <script>
@@ -305,6 +354,7 @@
         }
 
         async function loadFiles() {
+            // 실제 GitHub Pages 환경에서 실행되는 코드
             const detected = detectRepo();
 
             if (!detected) {
@@ -329,7 +379,7 @@
 
                 // 루트의 index.html만 제외하고 하위 폴더의 index.html은 포함
                 currentFiles = files
-                    .filter(f => f.path !== 'index.html') // 루트의 index.html만 제외
+                    .filter(f => f.path !== 'index.html')
                     .map(file => {
                         const pathParts = file.path.split('/');
                         const directory = pathParts.length > 1 ? pathParts.slice(0, -1).join('/') : '';
@@ -367,7 +417,6 @@
                 if (item.type === 'file' && item.name.endsWith('.html')) {
                     htmlFiles.push(item);
                 } else if (item.type === 'dir') {
-                    // 재귀적으로 하위 디렉토리 탐색
                     const subFiles = await fetchAllHTMLFiles(owner, repo, item.path);
                     htmlFiles = htmlFiles.concat(subFiles);
                 }
@@ -398,7 +447,7 @@
 
             switch (type) {
                 case 'name':
-                    sortedFiles.sort((a, b) => b.fileName.localeCompare(a.fileName)); // 역순으로 변경
+                    sortedFiles.sort((a, b) => a.fileName.localeCompare(b.fileName)); // A→Z 정순
                     break;
                 case 'directory':
                     sortedFiles.sort((a, b) => {
@@ -439,7 +488,7 @@
 
                 const icon = document.createElement('div');
                 icon.className = `file-icon ${file.isIndexFile ? 'index-icon' : ''}`;
-                icon.textContent = file.isIndexFile ? '🏠' : '📄';
+                icon.innerHTML = file.isIndexFile ? '<i class="fa-solid fa-house"></i>' : '<i class="fa-solid fa-file"></i>';
 
                 const info = document.createElement('div');
                 info.className = 'file-info';
@@ -448,34 +497,44 @@
                 name.className = 'file-name';
                 name.textContent = file.fileName;
 
+                // 📍 메타 컨테이너 (디렉토리와 크기를 space-between으로 정렬)
+                const metaContainer = document.createElement('div');
+                metaContainer.className = 'file-meta-container';
+
                 const directory = document.createElement('div');
                 directory.className = `file-directory ${file.isIndexFile ? 'index-dir' : ''}`;
-                directory.textContent = file.directory || '루트 폴더';
+                directory.textContent = file.directory || 'root';
 
                 const size = document.createElement('div');
                 size.className = 'file-size';
-                size.textContent = `크기: ${formatFileSize(file.fileSize)}`;
+                size.textContent = formatFileSize(file.fileSize);
 
-                const path = document.createElement('div');
-                path.className = 'file-path';
-                path.textContent = `전체 경로: ${file.path}`;
+                // 메타 컨테이너에 디렉토리와 크기 추가
+                metaContainer.appendChild(directory);
+                metaContainer.appendChild(size);
 
+                // info에 이름과 메타 컨테이너 추가
                 info.appendChild(name);
-                info.appendChild(directory);
-                info.appendChild(size);
+                info.appendChild(metaContainer);
 
+                // 전체 경로 표시
+                const filePath = document.createElement('div');
+                filePath.className = 'file-path';
+                filePath.textContent = `파일경로: ${file.path}`;
+
+                // 카드 구성
                 header.appendChild(icon);
                 header.appendChild(info);
-
                 card.appendChild(header);
-                card.appendChild(path);
+                card.appendChild(filePath);
                 grid.appendChild(card);
             });
 
-            // 기존 내용을 지우고 그리드만 추가
+            // 화면에 표시
             fileListDiv.innerHTML = '';
             fileListDiv.appendChild(grid);
 
+            // 통계 정보 업데이트
             const indexFileCount = files.filter(f => f.isIndexFile).length;
             const regularFileCount = files.length - indexFileCount;
 

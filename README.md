@@ -2,6 +2,8 @@
 
 GitHub Pages 저장소의 HTML 파일들을 자동으로 탐지하고 보여주는 **목록 index 페이지**입니다.
 
+🔗 예시 페이지 바로가기 →
+
 ---
 
 ## ✨ 특징
@@ -24,8 +26,3 @@ GitHub Pages 저장소의 HTML 파일들을 자동으로 탐지하고 보여주�
    형태의 URL로 접속하면, 저장소의 HTML 파일들을 자동으로 스캔하여 보여줍니다.
 
 ---
-
-## 🎯 지원하는 URL 형식
-
-- `username.github.io` (개인 페이지)  
-- `username.github.io/repository-name` (프로젝트 페이지)
